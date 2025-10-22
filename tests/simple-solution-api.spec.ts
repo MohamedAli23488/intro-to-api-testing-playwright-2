@@ -28,7 +28,7 @@ test('get order with  wrong ID should receive code 400', async ({ request }) => 
   // Log the response status, body and headers
   console.log('response body:', await response.json())
   console.log('response headers:', response.headers())
-  // Check if the response status is 200
+  // Check if the response status is 400
   expect(response.status()).toBe(400)
 })
 
