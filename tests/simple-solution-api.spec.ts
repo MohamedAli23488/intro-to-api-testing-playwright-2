@@ -413,7 +413,9 @@ test('Get order with Valid username & password should receive code 200', async (
   expect(response.status()).toBe(StatusCodes.OK)
 })
 
-test('Get order with Valid username & Missing password should receive code 500', async ({ request }) => {
+test('Get order with Valid username & Missing password should receive code 500', async ({
+  request,
+}) => {
   const username = 'Mohamed'
   const password = ''
 
@@ -433,7 +435,9 @@ test('Get order with Valid username & Missing password should receive code 500',
   expect(response.status()).toBe(StatusCodes.INTERNAL_SERVER_ERROR)
 })
 
-test('Get order with Missing username & valid password should receive code 500', async ({ request }) => {
+test('Get order with Missing username & valid password should receive code 500', async ({
+  request,
+}) => {
   const username = ''
   const password = 'Abcd123456'
 
@@ -452,4 +456,3 @@ test('Get order with Missing username & valid password should receive code 500',
   console.log('response body:', await response.json())
   expect(response.status()).toBe(StatusCodes.INTERNAL_SERVER_ERROR)
 })
-

@@ -4,7 +4,7 @@ Creating checklist for Put, Delete and Get requests.
 2-Delete request to delete an existing order using the Order ID and API key.
 3-Get request using valid username and valid password.
 
-# Put request checklist
+# Put request checklist.
 | Test Scenario                                 | Response Code     | 
 |-----------------------------------------------|-------------------|
 | Update order with valid order ID              | `200:Success`     |
@@ -16,7 +16,7 @@ Creating checklist for Put, Delete and Get requests.
 | Update order with API Key more than 16 digits | `400:Bad Request` |
 | Update order with empty API Key               | `400:Bad Request` |
 
-# Delete request checklist
+# Delete request checklist.
 | Test Scenario                                 | Response Code     | 
 |-----------------------------------------------|-------------------|
 | Delete order with valid order ID              | `204:Success`     |
@@ -28,7 +28,7 @@ Creating checklist for Put, Delete and Get requests.
 | Delete order with API Key more than 16 digits | `400:Bad Request` |
 | Delete order with empty API Key               | `400:Bad Request` |
 
-# Get request (Login with username and password) checklist
+# Get request (Login with username and password) checklist.
 | Test Scenario                                  | Response Code               | 
 |------------------------------------------------|-----------------------------|
 | Login with valid username and password         | `200:Success`               |
