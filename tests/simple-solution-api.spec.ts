@@ -224,19 +224,10 @@ test('put order with Empty API Key should receive code 400', async ({ request })
 // Delete Request
 
 test('Delete order with Valid ID should receive code 204', async ({ request }) => {
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 9,
-  }
   const requestHeaders = {
     api_key: '1234567890123456',
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/9', {
-    data: requestBody,
     headers: requestHeaders,
   })
   console.log('response status:', response.status())
@@ -245,19 +236,10 @@ test('Delete order with Valid ID should receive code 204', async ({ request }) =
 })
 
 test('Delete order with Valid API Key should receive code 204', async ({ request }) => {
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 4,
-  }
   const requestHeaders = {
     api_key: '1234567890123456',
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/9', {
-    data: requestBody,
     headers: requestHeaders,
   })
   console.log('response status:', response.status())
@@ -266,19 +248,10 @@ test('Delete order with Valid API Key should receive code 204', async ({ request
 })
 
 test('Delete order with ID less than 1 should receive code 400', async ({ request }) => {
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 0,
-  }
   const requestHeaders = {
     api_key: '1234567890123456',
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/0', {
-    data: requestBody,
     headers: requestHeaders,
   })
   console.log('response status:', response.status())
@@ -287,19 +260,10 @@ test('Delete order with ID less than 1 should receive code 400', async ({ reques
 })
 
 test('Delete order with ID more than 10 should receive code 400', async ({ request }) => {
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 11,
-  }
   const requestHeaders = {
     api_key: '1234567890123456',
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/11', {
-    data: requestBody,
     headers: requestHeaders,
   })
   console.log('response status:', response.status())
@@ -308,19 +272,10 @@ test('Delete order with ID more than 10 should receive code 400', async ({ reque
 })
 
 test('Delete order with Invalid API Key should receive code 400', async ({ request }) => {
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 8,
-  }
   const requestHeaders = {
     api_key: 'abcdefghijklmnop',
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/8', {
-    data: requestBody,
     headers: requestHeaders,
   })
   console.log('response status:', response.status())
@@ -329,19 +284,10 @@ test('Delete order with Invalid API Key should receive code 400', async ({ reque
 })
 
 test('Delete order with API Key less than 16 should receive code 400', async ({ request }) => {
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 8,
-  }
   const requestHeaders = {
     api_key: '1234567890123',
   }
-  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders8', {
-    data: requestBody,
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/8', {
     headers: requestHeaders,
   })
   console.log('response status:', response.status())
@@ -350,19 +296,10 @@ test('Delete order with API Key less than 16 should receive code 400', async ({ 
 })
 
 test('Delete order with API Key more than 16 should receive code 400', async ({ request }) => {
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 8,
-  }
   const requestHeaders = {
     api_key: '1234567890123456789',
   }
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/8', {
-    data: requestBody,
     headers: requestHeaders,
   })
   console.log('response status:', response.status())
@@ -371,19 +308,10 @@ test('Delete order with API Key more than 16 should receive code 400', async ({ 
 })
 
 test('Delete order with Empty API Key should receive code 400', async ({ request }) => {
-  const requestBody = {
-    status: 'OPEN',
-    courierId: 0,
-    customerName: 'string',
-    customerPhone: 'string',
-    comment: 'string',
-    id: 8,
-  }
   const requestHeaders = {
     api_key: '',
   }
-  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/8', {
-    data: requestBody,
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/8', {
     headers: requestHeaders,
   })
   console.log('response status:', response.status())
