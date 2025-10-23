@@ -51,3 +51,336 @@ test('post order with correct data should receive code 201', async ({ request })
   console.log('response body:', await response.json())
   expect(response.status()).toBe(StatusCodes.OK)
 })
+
+// PUT Request
+test('put order with Valid ID should receive code 200', async ({ request }) => {
+  const requestBody = {
+    status: 'OPEN',
+    courierId: 0,
+    customerName: 'string',
+    customerPhone: 'string',
+    comment: 'string',
+    id: 0,
+  }
+  const requestHeaders = {
+    api_key: '1234567890123456',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/5', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.OK)
+})
+
+test('put order with Valid API Key should receive code 200', async ({ request }) => {
+  const requestBody = {
+    status: 'OPEN',
+    courierId: 0,
+    customerName: 'string',
+    customerPhone: 'string',
+    comment: 'string',
+    id: 4,
+  }
+  const requestHeaders = {
+    api_key: '1234567890123456',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/9', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.OK)
+})
+
+test('put order with ID less than 1 should receive code 400', async ({ request }) => {
+  const requestBody = {
+    status: 'OPEN',
+    courierId: 0,
+    customerName: 'string',
+    customerPhone: 'string',
+    comment: 'string',
+    id: 8,
+  }
+  const requestHeaders = {
+    api_key: '1234567890123456',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/0', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('put order with ID more than 10 should receive code 400', async ({ request }) => {
+  const requestBody = {
+    status: 'OPEN',
+    courierId: 0,
+    customerName: 'string',
+    customerPhone: 'string',
+    comment: 'string',
+    id: 8,
+  }
+  const requestHeaders = {
+    api_key: '1234567890123456',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/11', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('put order with Invalid API Key should receive code 400', async ({ request }) => {
+  const requestBody = {
+    status: 'OPEN',
+    courierId: 0,
+    customerName: 'string',
+    customerPhone: 'string',
+    comment: 'string',
+    id: 8,
+  }
+  const requestHeaders = {
+    api_key: 'abcdefghijklmnop',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/0', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('put order with API Key less than 16 should receive code 400', async ({ request }) => {
+  const requestBody = {
+    status: 'OPEN',
+    courierId: 0,
+    customerName: 'string',
+    customerPhone: 'string',
+    comment: 'string',
+    id: 8,
+  }
+  const requestHeaders = {
+    api_key: '1234567890123',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/0', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('put order with API Key more than 16 should receive code 400', async ({ request }) => {
+  const requestBody = {
+    status: 'OPEN',
+    courierId: 0,
+    customerName: 'string',
+    customerPhone: 'string',
+    comment: 'string',
+    id: 8,
+  }
+  const requestHeaders = {
+    api_key: '1234567890123456789',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/0', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('put order with Empty API Key should receive code 400', async ({ request }) => {
+  const requestBody = {
+    status: 'OPEN',
+    courierId: 0,
+    customerName: 'string',
+    customerPhone: 'string',
+    comment: 'string',
+    id: 8,
+  }
+  const requestHeaders = {
+    api_key: '',
+  }
+  const response = await request.put('https://backend.tallinn-learning.ee/test-orders/0', {
+    data: requestBody,
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+// Delete Request
+
+test('Delete order with Valid ID should receive code 204', async ({ request }) => {
+  const requestHeaders = {
+    api_key: '1234567890123456',
+  }
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/9', {
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.text())
+  expect(response.status()).toBe(StatusCodes.NO_CONTENT)
+})
+
+test('Delete order with Valid API Key should receive code 204', async ({ request }) => {
+  const requestHeaders = {
+    api_key: '1234567890123456',
+  }
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/9', {
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.text())
+  expect(response.status()).toBe(StatusCodes.NO_CONTENT)
+})
+
+test('Delete order with ID less than 1 should receive code 400', async ({ request }) => {
+  const requestHeaders = {
+    api_key: '1234567890123456',
+  }
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/0', {
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('Delete order with ID more than 10 should receive code 400', async ({ request }) => {
+  const requestHeaders = {
+    api_key: '1234567890123456',
+  }
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/11', {
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
+})
+
+test('Delete order with Invalid API Key should receive code 400', async ({ request }) => {
+  const requestHeaders = {
+    api_key: 'abcdefghijklmnop',
+  }
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/8', {
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.text())
+  expect(response.status()).toBe(StatusCodes.UNAUTHORIZED)
+})
+
+test('Delete order with API Key less than 16 should receive code 400', async ({ request }) => {
+  const requestHeaders = {
+    api_key: '1234567890123',
+  }
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/8', {
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.text())
+  expect(response.status()).toBe(StatusCodes.UNAUTHORIZED)
+})
+
+test('Delete order with API Key more than 16 should receive code 400', async ({ request }) => {
+  const requestHeaders = {
+    api_key: '1234567890123456789',
+  }
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/8', {
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.text())
+  expect(response.status()).toBe(StatusCodes.UNAUTHORIZED)
+})
+
+test('Delete order with Empty API Key should receive code 400', async ({ request }) => {
+  const requestHeaders = {
+    api_key: '',
+  }
+  const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/8', {
+    headers: requestHeaders,
+  })
+  console.log('response status:', response.status())
+  console.log('response body:', await response.text())
+  expect(response.status()).toBe(StatusCodes.UNAUTHORIZED)
+})
+
+// Get request (Login with username and password)
+
+test('Get order with Valid username & password should receive code 200', async ({ request }) => {
+  const username = 'Mohamed'
+  const password = 'Abcd123456'
+
+  const requestHeaders = {
+    username: username,
+    password: password,
+  }
+
+  const response = await request.get(
+    'https://backend.tallinn-learning.ee/test-orders?username=Mohamed&password=Abcd123456',
+    {
+      headers: requestHeaders,
+    },
+  )
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.OK)
+})
+
+test('Get order with Valid username & Missing password should receive code 500', async ({
+  request,
+}) => {
+  const username = 'Mohamed'
+  const password = ''
+
+  const requestHeaders = {
+    username: username,
+    password: password,
+  }
+
+  const response = await request.get(
+    'https://backend.tallinn-learning.ee/test-orders?username=Mohamed',
+    {
+      headers: requestHeaders,
+    },
+  )
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.INTERNAL_SERVER_ERROR)
+})
+
+test('Get order with Missing username & valid password should receive code 500', async ({
+  request,
+}) => {
+  const username = ''
+  const password = 'Abcd123456'
+
+  const requestHeaders = {
+    username: username,
+    password: password,
+  }
+
+  const response = await request.get(
+    'https://backend.tallinn-learning.ee/test-orders?password=Abcd123456',
+    {
+      headers: requestHeaders,
+    },
+  )
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.INTERNAL_SERVER_ERROR)
+})
