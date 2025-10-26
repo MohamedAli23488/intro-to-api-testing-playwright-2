@@ -3,7 +3,7 @@ import { OrderDto } from '../dto/order-dto'
 import { StatusCodes } from 'http-status-codes'
 
 test('put order with Valid ID should receive code 200', async ({ request }) => {
-  const requestBody = new OrderDto('OPEN',1,'Moh','4587','adc',9)
+  const requestBody = new OrderDto('OPEN', 1, 'Moh', '4587', 'adc', 9)
   const requestHeaders = {
     api_key: '1234567890123456',
   }
@@ -17,7 +17,7 @@ test('put order with Valid ID should receive code 200', async ({ request }) => {
 })
 
 test('put order with Valid API Key should receive code 200', async ({ request }) => {
-  const requestBody = new OrderDto('OPEN',0,'Moh','4587','adc',4)
+  const requestBody = new OrderDto('OPEN', 0, 'Moh', '4587', 'adc', 4)
   const requestHeaders = {
     api_key: '1234567890123456',
   }
@@ -31,7 +31,7 @@ test('put order with Valid API Key should receive code 200', async ({ request })
 })
 
 test('put order with ID less than 1 should receive code 400', async ({ request }) => {
-  const requestBody = new OrderDto('OPEN',0,'Moh','4587','adc',8)
+  const requestBody = new OrderDto('OPEN', 0, 'Moh', '4587', 'adc', 8)
   const requestHeaders = {
     api_key: '1234567890123456',
   }
