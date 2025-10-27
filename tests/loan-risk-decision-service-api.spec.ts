@@ -44,7 +44,7 @@ test(' Validate risk decision for user with income range from than 1000 to 5000 
   expect.soft(responseBody.applicationId).toBeDefined()
 })
 
-test(' Validate risk decision for user with income range from than 1000 to 5000 & loan amount range from 100 to 500 & Loan period 12 should return 200 & Low Risk decision', async ({
+test(' Validate risk decision for user with income range from 1000 to 5000 & loan amount range from 100 to 500 & Loan period 12 should return 200 & Low Risk decision', async ({
   request,
 }) => {
   const requestBody = LoanRiskDecisionServiceDto.assessNewPositiveLoanWithLowRiskDecision()
@@ -114,7 +114,7 @@ test('Validate the assertion of Loan with income greater than 0 should return 20
   console.log('response status:', response.status())
   console.log('response body:', await response.json())
   console.log(responseBody)
-  expect(response.status()).toBe(StatusCodes.OK)
+  expect.soft(response.status()).toBe(StatusCodes.OK)
   expect.soft(responseBody.riskLevel).toBeDefined()
   expect.soft(responseBody.riskDecision).toBeDefined()
   expect.soft(responseBody.riskScore).toBeDefined()
