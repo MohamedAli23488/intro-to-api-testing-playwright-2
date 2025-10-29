@@ -6,9 +6,18 @@ export class LoginDto {
     this.username = username
     this.password = password
   }
-  static createLoginDto () :LoginDto {
-    return new LoginDto (process.env.USER || '', process.env.PASSWORD || '')
+
+  static wrongCredentials(): LoginDto {
+    return new LoginDto('asd', 'hjuefl')
+  }
+
+  static missingPassword(): LoginDto {
+    return new LoginDto(process.env.USER || '', '')
+  }
+  static missingUserName(): LoginDto {
+    return new LoginDto( '', process.env.PASSWORD || '')
+  }
+  static createLoginDto(): LoginDto {
+    return new LoginDto(process.env.USER || '', process.env.PASSWORD || '')
   }
 }
-
-
